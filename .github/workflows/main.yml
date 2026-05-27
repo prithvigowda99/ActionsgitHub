@@ -1,1 +1,9 @@
-#this is for testing
+name: demo
+
+on: workflow_dispatch
+
+jobs: 
+    this-is-my-first:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "welcomr to git hub actions"
