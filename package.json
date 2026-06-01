@@ -1,0 +1,15 @@
+{
+  "name": "github-action-demo",
+  "version": "1.0.0",
+  "description": "Simple Node app to display a GitHub Actions message",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "express": "^4.18.2"
+  },
+  "author": "Prithvi",
+  "license": "MIT"
+}
