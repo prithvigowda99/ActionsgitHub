@@ -1,0 +1,12 @@
+name: toCurl
+on: workflow_dispatch
+
+jobs: 
+    this-is-my-first:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - run: npm install
+            - run: npm start
+            - run: sleep 5
+            - run: curl http://localhost:3000
