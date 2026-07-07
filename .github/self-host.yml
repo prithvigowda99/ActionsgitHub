@@ -1,0 +1,34 @@
+name: Self-Hosted Runner Demo
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_on_self_hosted:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Display System Info
+        run: |
+          echo "Running on self-hosted runner"
+          echo "OS: $(uname -s)"
+          echo "Architecture: $(uname -m)"
+          echo "Hostname: $(hostname)"
+
+      - name: Build
+        run: echo "Building on self-hosted machine..."
+
+      - name: Test
+        run: echo "Running tests on self-hosted machine..."
+
+      - name: Deploy
+        run: echo "Deploying from self-hosted machine..."
+
+      - name: Cleanup
+        if: always()
+        run: echo "Cleaning up resources..."
