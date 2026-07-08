@@ -1,0 +1,36 @@
+name: output-from-previous-jobs
+
+on : 
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: self-hosted
+    outputs:
+      mymsg: ${{ steps.idstep1.outputs.firstmsg }}
+      mymsg2: ${{ steps.idstep1.outputs.secondmsg }}
+    steps:
+      - name: set output
+        id: idstep1
+        run: |
+          firstmsg="Hello from job1"
+          secondmsg="Hello again from job1"
+          echo "firstmsg=$firstmsg" >> $GITHUB_OUTPUT
+          echo "secondmsg=$secondmsg" >> $GITHUB_OUTPUT
+
+  job2:
+    needs: job1
+    runs-on: self-hosted
+    steps:
+      - name: print received output
+        run: |
+          echo "Output from job1: ${{ needs.job1.outputs.mymsg }}"
+          echo "Output from job1: ${{ needs.job1.outputs.mymsg2 }}"
+          if [ "${{ needs.job1.outputs.mymsg }}" = "Hello from job1" ]; then
+            echo "Output matches expected value"
+          else
+            echo "Output does not match expected value"
+          fi
+
+
+
