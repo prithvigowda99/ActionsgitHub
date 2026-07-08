@@ -14,7 +14,7 @@ jobs:
         id: idstep1
         run: |
           firstmsg="Hello from job1"
-          secondmsg="Hello again from job1"
+          secondmsg="Hello again from job2"
           echo "firstmsg=$firstmsg" >> $GITHUB_OUTPUT
           echo "secondmsg=$secondmsg" >> $GITHUB_OUTPUT
 
